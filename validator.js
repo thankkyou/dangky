@@ -6,9 +6,18 @@ function Validator (options) {
         options.rules.forEach(function(rule){
             
             var inputElement = formElement.querySelector(rule.selector);
+            var errorElement = inputElement.parentElement.querySelector('.form-message');
 
             if (inputElement) {
-                inputElement.onblur = function
+                inputElement.onblur = function () {
+                    var errorMessage = rule.test(inputElement.value);
+                    
+                    
+                    if (errorMessage) {
+                        errorElement.innerText = errorMessage;
+                    }
+
+                }
             }
 
         }) ;
@@ -16,16 +25,16 @@ function Validator (options) {
 
 }
 
-Validator.isRequired = function() {
+Validator.isRequired = function(selector) {
      return {
         selector: selector, 
-        test: function() {
-
+        test: function(value) {
+            return value.trim() ? undefined : 'Vui lòng nhập trường này'
         }
      };
 }
 
-Validator.isEmail = function() {
+Validator.isEmail = function(selector) {
     return {
         selector: selector, 
         test: function() {
