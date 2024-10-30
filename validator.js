@@ -1,4 +1,7 @@
 function Validator (options) {
+
+    function validate() 
+
     var formElement = document.querySelector(options.form);
 
     if (formElement) {
@@ -18,6 +21,7 @@ function Validator (options) {
                         inputElement.parentElement.classList.add('invalid');
                     } else { 
                         errorElement.innerText = '';
+                        inputElement.parentElement.classList.remove('invalid');
                     }
 
                 }
