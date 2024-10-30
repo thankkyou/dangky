@@ -15,6 +15,7 @@ function Validator (options) {
                     
                     if (errorMessage) {
                         errorElement.innerText = errorMessage;
+                        inputElement.parentElement.classList.add('invalid')
                     }
 
                 }
