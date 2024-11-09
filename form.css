@@ -87,6 +87,7 @@ i{
 
 .form-group.success .form-control{
     border-color: #1dbfaf;
+    border-width: 2px;
 }
 
 .form-group.invalid .form-control{
