@@ -14,6 +14,7 @@ html{
     background: #f1f1f1;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-image: url(./img/wallpaperflare-cropped.jpg);
     background-size: cover;
@@ -115,5 +116,49 @@ html{
 }
 
 .spacer {
-    margin-top: 36px;
+    margin-top: 30px;
 }
+
+.box-submit{
+    width: 360px;
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 2px;
+    margin: 20px;
+    align-self: center;
+    visibility: hidden;
+    /* animation: blink 1000ms ease-out; */
+}
+
+.show{
+    visibility: visible;
+}
+
+.boxvalid {
+    background-color: #1dbfaf;
+    color: #fff;
+}
+
+.boxinvalid{
+    background-color: #be0000;
+    color: #fff;
+}
+
+.blink-red{
+    animation: blink 250ms ease-out;
+}
+
+@keyframes blink {
+    0% {
+        background-color: #f33a58; /* Màu đỏ */
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: #f33a58;
+    }
+}
+

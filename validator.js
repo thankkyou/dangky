@@ -1,3 +1,4 @@
+
 function Validator (options) {
 
     //Hàm thự hiện validate
@@ -9,9 +10,11 @@ function Validator (options) {
         if (errorMessage) {
             errorElement.innerText = errorMessage;
             inputElement.parentElement.classList.add('invalid');
+            inputElement.parentElement.classList.remove('success');
         } else {
             errorElement.innerText = '';
             inputElement.parentElement.classList.remove('invalid');
+            inputElement.parentElement.classList.add('success');
         }
     }
 
@@ -79,3 +82,37 @@ Validator.isConfirmed = function (selector, getConfirmValue) {
         }
     }
 }
+
+
+const formRows = document.querySelectorAll('.form-group');
+const container = document.querySelector('.main');
+const submitbox = document.querySelector('.box-submit');
+
+let arrFormRows = Array.from(formRows);
+
+
+let form1 = document.getElementById('form-1');
+
+form1.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    let isValid = true;
+    arrFormRows.forEach(item => {
+        if (!item.classList.contains('success')) isValid = false;
+    })
+
+    if (isValid) {
+        container.classList.add('complete');
+        submitbox.classList.remove('boxinvalid');
+        submitbox.classList.add('show', 'boxvalid');
+        submitbox.innerText = ("Bạn đã tạo tài khoản thành công.");
+        
+    } else {
+        container.classList.remove('complete');
+        submitbox.classList.remove('boxinvalid');
+        submitbox.classList.add('show', 'boxinvalid', 'blink-red');
+        setTimeout(function() {
+            submitbox.classList.remove('blink-red');
+        }, 200);
+        submitbox.innerText = 'Bạn nhập sai hoặc còn trường trống chưa nhập.';
+    }
+}); 
